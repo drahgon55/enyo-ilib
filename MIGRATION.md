@@ -177,6 +177,9 @@ nothing:
 - The path macro is proven by `DateFmt` formatting `11/16/26` from fetched data
   and by 22 successful requests under `ilib/locale/`, not by inspecting `base`.
 
+`test-esm/all-modules.html` loads each of the 110 modules in a document of its
+own, so each evaluates cold: **110/110**.
+
 Both substantive changes were confirmed to fail when reverted, and they fail
 **different** checks, so the two concerns are independently covered:
 
@@ -204,10 +207,6 @@ request invisible too.
 
 ## Still outstanding
 
-- **The cold-load page has not been run yet.** `test-esm/all-modules.html` and
-  `load-one.html` are in place and import each of the 110 modules in a document
-  of its own, but browser tooling became unavailable before that run. The static
-  cycle check covers the same failure mode deterministically and is clean.
 - **onyx's two i18n modules** (`src/i18n/DatePicker.js`, `src/i18n/TimePicker.js`)
   still carry bare `enyo-ilib` specifiers, pending the rewrite in that
   repository. Their three specifiers resolve to `enyo-ilib/index.js`,

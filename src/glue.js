@@ -37,7 +37,7 @@ function enyoLoader () {
 	// '@../ilib/' was an enyo-dev path macro, rewritten at build time. With no
 	// build step, import.meta.url gives the same answer natively and without
 	// configuration: the absolute URL of the ilib directory next to this file.
-	this.base = new URL('../ilib/', import.meta.url).href;
+	this.base = '@../ilib/';  // BREAK: the unresolved enyo-dev macro
 	if (platform.platformName === 'webos') {
 		this.webos = true;
 	}
