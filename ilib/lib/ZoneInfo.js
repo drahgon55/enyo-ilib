@@ -58,7 +58,10 @@ var _platform = "unknown";
 	}
 })();
 
-var PackedBuffer = PackedBuffer || (((_platform === "nodejs")||(_platform === "qt")) ? require("./PackedBuffer.js"): undefined);
+// Imported unconditionally now. It used to be required only on nodejs and qt;
+// a static import costs one small module and keeps this browser-resolvable.
+import PackedBuffer from "./PackedBuffer.js";
+import ilib from "./ilib.js";
 
 /**
  * @constructor
@@ -96,14 +99,18 @@ var ZoneInfoFile = function (path) {
 
 		case "nodejs":
 			// console.log("ZoneInfoFile: loading zoneinfo path " + path + "\n");
-			var fs = require("fs");
+			// `fs` cannot be imported statically here without making this module
+			// unresolvable in a browser, and ESM has no synchronous require. The
+			// browser path below (XMLHttpRequest) is the one this package uses.
+			throw new Error("enyo-ilib: ZoneInfo's nodejs path is not available in the ES module build; see MIGRATION.md");
+			// eslint-disable-next-line no-unreachable
 			var bytes = new Buffer(fs.readFileSync(path));
 			var byteArray = new Uint8Array(bytes);
 			this._parseInfo(byteArray);
 			break;
 
 		case "qt":
-			var fr = require("./ilib.js").getLoader().fr;
+			var fr = ilib.getLoader().fr;
 			var bytes = fr.readBinary(path);
 			this._parseInfo(bytes);
 			break;
@@ -562,4 +569,4 @@ ZoneInfoFile.prototype.getIlibZoneInfo = function(date) {
 	return res;
 };
 
-module.exports = ZoneInfoFile;
+export default ZoneInfoFile;

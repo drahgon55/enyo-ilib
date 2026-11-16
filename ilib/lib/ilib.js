@@ -75,11 +75,10 @@ if (typeof(window) !== 'undefined') {
 }
 */
 
-// export ilib for use as a module in nodejs
-if (typeof(module) !== 'undefined') {
-    module.exports = ilib;
-    module.exports.ilib = ilib;  // for backwards compatibility with older versions of ilib
-}
+// `ilib.ilib` is kept for backwards compatibility with older versions of ilib.
+// The default export is at the end of this file, since `export` may not appear
+// inside a block and the rest of the file keeps adding to `ilib`.
+ilib.ilib = ilib;
 
 /**
  * Sets the pseudo locale. Pseudolocalization (or pseudo-localization) is used for testing
@@ -676,3 +675,5 @@ ilib.isDynData = function() {
 };
 
 ilib._loadtime = new Date().getTime();
+
+export default ilib;

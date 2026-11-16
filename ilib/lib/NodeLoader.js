@@ -24,12 +24,16 @@
  * @constructor
  * @private
  */
-module.exports = function (ilib) {
-	var path = require("./Path.js"),
-		fs = require("fs"),
-		util = require("util"),
-		ZoneInfoFile = require("./ZoneInfo.js"),
-		Loader = require("./Loader.js");
+import path from "./Path.js";
+import fs from "fs";
+import util from "util";
+import ZoneInfoFile from "./ZoneInfo.js";
+import Loader from "./Loader.js";
+
+// Node-only. `fs` and `util` are bare Node specifiers, so this module does not
+// resolve in a browser -- which is harmless, because nothing in the package
+// imports it. It is excluded from the cold-load harness for that reason.
+export default function (ilib) {
 	
 	var NodeLoader = function (ilib) {
 		// util.print("new common NodeLoader instance\n");

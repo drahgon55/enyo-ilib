@@ -24,10 +24,10 @@ LocaleInfo.js
 Calendar.js
 */
 
-var ilib = require("./ilib.js");
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var Calendar = require("./Calendar.js");
+import ilib from "./ilib.js";
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import Calendar from "./Calendar.js";
 
 /**
  * Factory method to create a new instance of a calendar subclass.<p>
@@ -144,14 +144,9 @@ CalendarFactory._dynMap = {
  * @protected
  */
 CalendarFactory._dynLoadCalendar = function (name) {
-	if (!Calendar._constructors[name]) {
-		var entry = CalendarFactory._dynMap[name];
-		if (entry) {
-			Calendar._constructors[name] = require("./" + entry + "Cal.js");
-		}
-	}
 	return Calendar._constructors[name];
 };
+
 
 /** @private */
 CalendarFactory._init = function(type, options) {
@@ -192,4 +187,4 @@ CalendarFactory.getCalendars = function () {
 	return arr;
 };
 
-module.exports = CalendarFactory;
+export default CalendarFactory;

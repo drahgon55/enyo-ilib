@@ -20,18 +20,18 @@
 
 /* !depends ilib.js Locale.js LocaleInfo.js JulianDay.js JSUtils.js CalendarFactory.js IDate.js GregorianDate.js*/
 
-var ilib = require("./ilib.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var JulianDay = require("./JulianDay.js");
-var CalendarFactory = require("./CalendarFactory.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import JulianDay from "./JulianDay.js";
+import CalendarFactory from "./CalendarFactory.js";
 
 // Statically depend on these even though we don't use them
 // to guarantee they are loaded into the cache already.
-var IDate = require("./IDate.js");
-var GregorianDate = require("./GregorianDate.js");
+import IDate from "./IDate.js";
+import GregorianDate from "./GregorianDate.js";
 
 /**
  * Factory method to create a new instance of a date subclass.<p>
@@ -170,14 +170,9 @@ DateFactory._dynMap = {
  * @protected
  */
 DateFactory._dynLoadDate = function (name) {
-	if (!IDate._constructors[name]) {
-		var entry = DateFactory._dynMap[name];
-		if (entry) {
-			IDate._constructors[name] = require("./" + entry + "Date.js");
-		}
-	}
 	return IDate._constructors[name];
 };
+
 
 /** 
  * @protected
@@ -255,4 +250,4 @@ DateFactory._dateToIlib = function(inDate, timezone, locale) {
 	});
 };
 
-module.exports = DateFactory;
+export default DateFactory;
