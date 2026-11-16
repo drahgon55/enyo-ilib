@@ -17,26 +17,27 @@
  * limitations under the License.
  */
 
-var
-	dom = require('enyo/dom'),
-	i18n = require('enyo/i18n'),
-	platform = require('enyo/platform'),
-	utils = require('enyo/utils'),
-	Ajax = require('enyo/Ajax'),
-	Control = require('enyo/Control');
+import dom from 'enyo/src/dom.js';
+import i18n from 'enyo/src/i18n.js';
+import platform from 'enyo/src/platform.js';
+import utils from 'enyo/src/utils.js';
+import Ajax from 'enyo/src/Ajax.js';
+import Control from 'enyo/src/Control/Control.js';
 
-var
-	ilib = require('../ilib/lib/ilib'),
-	CaseMapper = require('../ilib/lib/CaseMapper'),
-	ResBundle = require('../ilib/lib/ResBundle'),
-	Loader = require('../ilib/lib/Loader'),
-	Locale = require('../ilib/lib/Locale'),
-	LocaleInfo = require('../ilib/lib/LocaleInfo'),
-	ScriptInfo = require('../ilib/lib/ScriptInfo'),
-	ZoneInfoFile = require('./zoneinfo');
+import ilib from '../ilib/lib/ilib.js';
+import CaseMapper from '../ilib/lib/CaseMapper.js';
+import ResBundle from '../ilib/lib/ResBundle.js';
+import Loader from '../ilib/lib/Loader.js';
+import Locale from '../ilib/lib/Locale.js';
+import LocaleInfo from '../ilib/lib/LocaleInfo.js';
+import ScriptInfo from '../ilib/lib/ScriptInfo.js';
+import ZoneInfoFile from './zoneinfo.js';
 
 function enyoLoader () {
-	this.base = '@../ilib/';
+	// '@../ilib/' was an enyo-dev path macro, rewritten at build time. With no
+	// build step, import.meta.url gives the same answer natively and without
+	// configuration: the absolute URL of the ilib directory next to this file.
+	this.base = new URL('../ilib/', import.meta.url).href;
 	if (platform.platformName === 'webos') {
 		this.webos = true;
 	}
@@ -461,7 +462,7 @@ function invalidateResources() {
 // during the loads of later libraries.
 i18n.updateLocale(null, true);
 
-module.exports = {
+export default {
 	updateI18NClasses: updateI18NClasses,
 	isNonLatinLocale: isNonLatinLocale,
 	invalidateResources: invalidateResources

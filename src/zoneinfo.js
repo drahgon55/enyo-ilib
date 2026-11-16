@@ -42,23 +42,15 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-var
-	PackedBuffer = require("./packedbuffer.js");
+import PackedBuffer from "./packedbuffer.js";
 
 var _platform = "unknown";
 
 (function () {
-	if (typeof(require) !== 'undefined') {
-		try {
-			if(typeof(require('enyo')) !== 'undefined') {
-				_platform = "enyo";
-			} else {
-				_platform = "nodejs";
-			}
-		} catch(e) {
-			_platform = "nodejs";
-		}
-	} else if (typeof(environment) !== 'undefined') {
+	// The `require`-based test for enyo is gone: `require` never exists in an ES
+	// module. It made no difference anyway -- the `case "enyo"` branch below is
+	// commented out, so "enyo" fell through to the browser path regardless.
+	if (typeof(environment) !== 'undefined') {
 		_platform = "rhino";
 	} else if (typeof(process) !== 'undefined') {
 		_platform = "nodejs";
@@ -567,4 +559,4 @@ ZoneInfoFile.prototype.getIlibZoneInfo = function(date) {
 	return res;
 };
 
-module.exports = ZoneInfoFile;
+export default ZoneInfoFile;
