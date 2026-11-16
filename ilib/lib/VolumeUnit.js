@@ -23,7 +23,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -412,4 +412,4 @@ VolumeUnit.prototype.scale = function(measurementsystem) {
 //register with the factory method
 Measurement._constructors["volume"] = VolumeUnit;
 
-module.exports = VolumeUnit;
+export default VolumeUnit;

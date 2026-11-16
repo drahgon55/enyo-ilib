@@ -21,10 +21,10 @@
 
 // !data scriptToRange
 
-var ilib = require("./ilib.js");
+import ilib from "./ilib.js";
 
-var CType = require("./CType.js");
-var IString = require("./IString.js");
+import CType from "./CType.js";
+import IString from "./IString.js";
 
 /**
  * Return whether or not the first character in the given string is 
@@ -66,4 +66,4 @@ isScript._init = function (sync, loadParams, onLoad) {
 	CType._load("scriptToRange", sync, loadParams, onLoad);
 };
 
-module.exports = isScript;
+export default isScript;

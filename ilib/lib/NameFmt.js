@@ -28,15 +28,15 @@ Utils.js
 
 // !data name
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
 
-var Locale = require("./Locale.js");
+import Locale from "./Locale.js";
 
-var IString = require("./IString.js");
-var Name = require("./Name.js");
-var CType = require("./CType.js");
-var isPunct = require("./isPunct.js");
+import IString from "./IString.js";
+import Name from "./Name.js";
+import CType from "./CType.js";
+import isPunct from "./isPunct.js";
 
 /**
  * @class
@@ -374,4 +374,4 @@ NameFmt.prototype = {
 	}
 };
 
-module.exports = NameFmt;
+export default NameFmt;

@@ -128,4 +128,4 @@ SearchUtils.bisectionSearch = function(target, low, high, precision, func) {
 	return mid;
 };
 
-module.exports = SearchUtils;
+export default SearchUtils;

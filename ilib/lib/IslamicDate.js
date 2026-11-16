@@ -30,18 +30,18 @@ IslamicCal.js
 IslamicRataDie.js
 */
 
-var ilib = require("./ilib.js");
-var SearchUtils = require("./SearchUtils.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import SearchUtils from "./SearchUtils.js";
+import MathUtils from "./MathUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var TimeZone = require("./TimeZone.js");
-var IDate = require("./IDate.js");
-var Calendar = require("./Calendar.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import TimeZone from "./TimeZone.js";
+import IDate from "./IDate.js";
+import Calendar from "./Calendar.js";
 
-var IslamicRataDie = require("./IslamicRataDie.js");
-var IslamicCal = require("./IslamicCal.js");
+import IslamicRataDie from "./IslamicRataDie.js";
+import IslamicCal from "./IslamicCal.js";
 
 /**
  * @class
@@ -350,4 +350,4 @@ IslamicDate.prototype.getCalendar = function() {
 //register with the factory method
 IDate._constructors["islamic"] = IslamicDate;
 
-module.exports = IslamicDate;
+export default IslamicDate;

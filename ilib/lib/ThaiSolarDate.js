@@ -25,15 +25,15 @@ GregorianDate.js
 ThaiSolarCal.js
 */
 
-var ilib = require("./ilib.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import JSUtils from "./JSUtils.js";
 
-var Calendar = require("./Calendar.js");
-var IDate = require("./IDate.js");
+import Calendar from "./Calendar.js";
+import IDate from "./IDate.js";
 
-var ThaiSolarCal = require("./ThaiSolarCal.js");
-var GregorianDate = require("./GregorianDate.js");
-var GregRataDie = require("./GregRataDie.js");
+import ThaiSolarCal from "./ThaiSolarCal.js";
+import GregorianDate from "./GregorianDate.js";
+import GregRataDie from "./GregRataDie.js";
 
 /**
  * @class
@@ -231,4 +231,4 @@ ThaiSolarDate.prototype.getCalendar = function() {
 //register with the factory method
 IDate._constructors["thaisolar"] = ThaiSolarDate;
 
-module.exports = ThaiSolarDate;
+export default ThaiSolarDate;

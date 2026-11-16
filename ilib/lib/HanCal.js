@@ -27,15 +27,15 @@ GregRataDie.js
 RataDie.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
 
-var Calendar = require("./Calendar.js");
+import Calendar from "./Calendar.js";
 
-var Astro = require("./Astro.js");
-var RataDie = require("./RataDie.js");
-var GregorianDate = require("./GregorianDate.js");
-var GregRataDie = require("./GregRataDie.js");
+import Astro from "./Astro.js";
+import RataDie from "./RataDie.js";
+import GregorianDate from "./GregorianDate.js";
+import GregRataDie from "./GregRataDie.js";
 
 /**
  * @class
@@ -334,4 +334,4 @@ HanCal.prototype.getType = function() {
 /* register this calendar for the factory method */
 Calendar._constructors["han"] = HanCal;
 
-module.exports = HanCal;
+export default HanCal;

@@ -161,4 +161,4 @@ PackedBuffer.prototype.skip = function(num) {
 	this.index += num;
 };
 
-module.exports= PackedBuffer;
+export default PackedBuffer;

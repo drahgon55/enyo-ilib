@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var Path = require("./Path.js");
-var ilib = require("./ilib.js");
+import Path from "./Path.js";
+import ilib from "./ilib.js";
 
 /** 
  * @class
@@ -278,4 +278,4 @@ Loader.prototype.isAvailable = function(file, sync, cb) {
 	}));
 };
 
-module.exports = Loader;
+export default Loader;

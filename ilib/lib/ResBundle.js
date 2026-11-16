@@ -21,14 +21,14 @@
 
 // !data pseudomap
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
 
-var IString = require("./IString.js");
+import IString from "./IString.js";
 
 /**
  * @class
@@ -634,4 +634,4 @@ ResBundle.prototype = {
 	}
 };
 
-module.exports = ResBundle;
+export default ResBundle;

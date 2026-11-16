@@ -24,10 +24,10 @@ RataDie.js
 MathUtils.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var GregorianCal = require("./GregorianCal.js");
-var RataDie = require("./RataDie.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import GregorianCal from "./GregorianCal.js";
+import RataDie from "./RataDie.js";
 
 /**
  * @class
@@ -187,4 +187,4 @@ GregRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek, 7);
 };
 
-module.exports = GregRataDie;
+export default GregRataDie;

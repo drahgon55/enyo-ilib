@@ -20,10 +20,10 @@
 
 /* !depends ilib.js Calendar.js Utils.js MathUtils.js */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
-var Calendar = require("./Calendar.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import MathUtils from "./MathUtils.js";
+import Calendar from "./Calendar.js";
 
 /**
  * @class
@@ -116,4 +116,4 @@ GregorianCal.prototype.getType = function() {
 /* register this calendar for the factory method */
 Calendar._constructors["gregorian"] = GregorianCal;
 
-module.exports = GregorianCal;
+export default GregorianCal;

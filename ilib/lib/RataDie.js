@@ -24,10 +24,10 @@ MathUtils.js
 JSUtils.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var JSUtils = require("./JSUtils.js");
-var JulianDay = require("./JulianDay.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import JSUtils from "./JSUtils.js";
+import JulianDay from "./JulianDay.js";
 
 /**
  * @class
@@ -314,4 +314,4 @@ RataDie.prototype = {
 	}
 };
 
-module.exports = RataDie;
+export default RataDie;

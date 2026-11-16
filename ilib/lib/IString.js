@@ -21,10 +21,10 @@
 
 // !data plurals
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
-var Locale = require("./Locale.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import MathUtils from "./MathUtils.js";
+import Locale from "./Locale.js";
 
 /**
  * @class
@@ -1095,4 +1095,4 @@ IString.prototype = {
 	}
 };
 
-module.exports = IString;
+export default IString;

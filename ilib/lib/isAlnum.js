@@ -19,10 +19,10 @@
 
 // !depends CType.js IString.js isAlpha.js isDigit.js
 
-var CType = require("./CType.js");
-var IString = require("./IString.js");
-var isAlpha = require("./isAlpha.js");
-var isDigit = require("./isDigit.js");
+import CType from "./CType.js";
+import IString from "./IString.js";
+import isAlpha from "./isAlpha.js";
+import isDigit from "./isDigit.js";
 
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
@@ -61,4 +61,4 @@ isAlnum._init = function (sync, loadParams, onLoad) {
 	});
 };
 
-module.exports = isAlnum;
+export default isAlnum;

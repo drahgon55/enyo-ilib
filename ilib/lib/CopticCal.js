@@ -20,11 +20,11 @@
 
 /* !depends ilib.js Calendar.js Locale.js Utils.js EthiopicCal.js */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
-var Calendar = require("./Calendar.js");
-var EthiopicCal = require("./EthiopicCal.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
+import Calendar from "./Calendar.js";
+import EthiopicCal from "./EthiopicCal.js";
 
 /**
  * @class
@@ -47,4 +47,4 @@ CopticCal.prototype.constructor = CopticCal;
 /* register this calendar for the factory method */
 Calendar._constructors["coptic"] = CopticCal;
 
-module.exports = CopticCal;
+export default CopticCal;

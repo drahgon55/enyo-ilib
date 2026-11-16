@@ -19,9 +19,9 @@
 
 // !depends ilib.js Locale.js JSUtils.js
 
-var ilib = require("./ilib.js");
-var Locale = require("./Locale.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Locale from "./Locale.js";
+import JSUtils from "./JSUtils.js";
 
 var Utils = {};
 
@@ -460,4 +460,4 @@ Utils.loadData = function(params) {
 	}
 };
 
-module.exports = Utils;
+export default Utils;

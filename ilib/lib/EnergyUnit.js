@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -341,4 +341,4 @@ EnergyUnit.prototype.scale = function(measurementsystem) {
 //register with the factory method
 Measurement._constructors["energy"] = EnergyUnit;
 
-module.exports = EnergyUnit;
+export default EnergyUnit;

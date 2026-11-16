@@ -21,12 +21,12 @@
 // !depends IString.js CType.js Utils.js JSUtils.js
 // !data norm ctype_m
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
 
-var IString = require("./IString.js");
-var CType = require("./CType.js");
+import IString from "./IString.js";
+import CType from "./CType.js";
 
 /**
  * @class
@@ -400,4 +400,4 @@ GlyphString.prototype.ellipsize = function(length) {
 	return this.truncate(length > 0 ? length-1 : 0) + "…";
 };
 
-module.exports = GlyphString;
+export default GlyphString;

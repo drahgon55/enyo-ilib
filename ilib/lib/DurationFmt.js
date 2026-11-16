@@ -32,14 +32,14 @@ Utils.js
 // !data dateformats sysres
 // !resbundle sysres
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var DateFmt = require("./DateFmt.js");
-var IString = require("./IString.js");
-var ResBundle = require("./ResBundle.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import DateFmt from "./DateFmt.js";
+import IString from "./IString.js";
+import ResBundle from "./ResBundle.js";
 
 /**
  * @class
@@ -413,4 +413,4 @@ DurationFmt.prototype.getStyle = function () {
 	return this.style;
 };
 
-module.exports = DurationFmt;
+export default DurationFmt;

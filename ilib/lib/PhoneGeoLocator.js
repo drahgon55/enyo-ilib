@@ -30,15 +30,15 @@ ResBundle.js
 
 // !data iddarea area extarea extstates phoneres
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
+import Locale from "./Locale.js";
 
-var PhoneNumber = require("./PhoneNumber.js");
-var NumberingPlan = require("./NumberingPlan.js");
-var PhoneLocale = require("./PhoneLocale.js");
-var ResBundle = require("./ResBundle.js");
+import PhoneNumber from "./PhoneNumber.js";
+import NumberingPlan from "./NumberingPlan.js";
+import PhoneLocale from "./PhoneLocale.js";
+import ResBundle from "./ResBundle.js";
 
 /**
  * @class
@@ -662,4 +662,4 @@ PhoneGeoLocator.prototype = {
 	}
 };
 
-module.exports = PhoneGeoLocator;
+export default PhoneGeoLocator;

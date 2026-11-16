@@ -19,8 +19,8 @@
 
 // !depends ilib.js JSUtils.js
 
-var ilib = require("./ilib.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import JSUtils from "./JSUtils.js";
 
 /**
  * @class
@@ -896,4 +896,4 @@ Locale.getAvailableLocales = function (sync, onLoad) {
 	return locales;
 };
 
-module.exports = Locale;
+export default Locale;

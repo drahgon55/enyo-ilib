@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -351,4 +351,4 @@ MassUnit.getMeasures = function () {
 //register with the factory method
 Measurement._constructors["mass"] = MassUnit;
 
-module.exports = MassUnit;
+export default MassUnit;

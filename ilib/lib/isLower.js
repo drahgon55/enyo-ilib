@@ -21,10 +21,10 @@
 
 // !data ctype_l
 
-var ilib = require("./ilib.js");
+import ilib from "./ilib.js";
 
-var CType = require("./CType.js");
-var IString = require("./IString.js");
+import CType from "./CType.js";
+import IString from "./IString.js";
 
 /**
  * Return whether or not the first character is lower-case. For alphabetic
@@ -64,4 +64,4 @@ isLower._init = function (sync, loadParams, onLoad) {
 	CType._load("ctype_l", sync, loadParams, onLoad);
 };
 
-module.exports = isLower;
+export default isLower;

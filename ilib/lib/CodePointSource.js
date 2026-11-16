@@ -19,8 +19,8 @@
 
 // !depends isPunct.js NormString.js
 
-var isPunct = require("./isPunct.js");
-var NormString = require("./NormString.js");
+import isPunct from "./isPunct.js";
+import NormString from "./NormString.js";
 
 /**
  * @class
@@ -85,4 +85,4 @@ CodePointSource.prototype.consume = function(num) {
 	}
 };
 
-module.exports = CodePointSource;
+export default CodePointSource;

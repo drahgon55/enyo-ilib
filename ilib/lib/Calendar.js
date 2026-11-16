@@ -84,4 +84,4 @@ Calendar.prototype = {
 	}
 };
 
-module.exports = Calendar;
+export default Calendar;

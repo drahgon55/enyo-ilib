@@ -30,19 +30,19 @@ EthiopicDate.js
 CopticRataDie.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var IDate = require("./IDate.js");
-var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import IDate from "./IDate.js";
+import TimeZone from "./TimeZone.js";
+import Calendar from "./Calendar.js";
 
-var EthiopicDate = require("./EthiopicDate.js");
-var CopticCal = require("./CopticCal.js");
-var CopticRataDie = require("./CopticRataDie.js");
+import EthiopicDate from "./EthiopicDate.js";
+import CopticCal from "./CopticCal.js";
+import CopticRataDie from "./CopticRataDie.js";
 
 /**
  * @class
@@ -135,4 +135,4 @@ CopticDate.prototype.getCalendar = function() {
 //register with the factory method
 IDate._constructors["coptic"] = CopticDate;
 
-module.exports = CopticDate;
+export default CopticDate;

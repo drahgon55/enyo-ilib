@@ -23,9 +23,9 @@ EthiopicCal.js
 RataDie.js
 */
 
-var ilib = require("./ilib.js");
-var EthiopicCal = require("./EthiopicCal.js");
-var RataDie = require("./RataDie.js");
+import ilib from "./ilib.js";
+import EthiopicCal from "./EthiopicCal.js";
+import RataDie from "./RataDie.js";
 
 /**
  * @class
@@ -125,4 +125,4 @@ EthiopicRataDie.prototype._setDateComponents = function(date) {
 	this.rd = years + dayInYear + rdtime;
 };
 
-module.exports = EthiopicRataDie;
+export default EthiopicRataDie;

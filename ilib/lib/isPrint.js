@@ -19,8 +19,8 @@
 
 // !depends CType.js isCntrl.js
 
-var CType = require("./CType.js");
-var isCntrl = require("./isCntrl.js");
+import CType from "./CType.js";
+import isCntrl from "./isCntrl.js";
 
 /**
  * Return whether or not the first character is any printable character,
@@ -44,4 +44,4 @@ isPrint._init = function (sync, loadParams, onLoad) {
 	isCntrl._init(sync, loadParams, onLoad);
 };
 
-module.exports = isPrint;
+export default isPrint;

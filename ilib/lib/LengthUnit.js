@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -339,4 +339,4 @@ LengthUnit.getMeasures = function () {
 //register with the factory method
 Measurement._constructors["length"] = LengthUnit;
 
-module.exports = LengthUnit;
+export default LengthUnit;

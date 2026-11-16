@@ -26,9 +26,9 @@ Utils.js
 
 // !data phoneloc
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
 
 /**
  * @class
@@ -242,4 +242,4 @@ PhoneLocale.prototype._normPhoneReg = function(region) {
 	return norm;
 };
 
-module.exports = PhoneLocale;
+export default PhoneLocale;

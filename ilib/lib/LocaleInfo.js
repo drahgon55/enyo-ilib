@@ -21,9 +21,9 @@
 
 // !data localeinfo
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
 
 /**
  * @class
@@ -577,4 +577,4 @@ LocaleInfo.prototype = {
 	}	
 };
 
-module.exports = LocaleInfo;
+export default LocaleInfo;

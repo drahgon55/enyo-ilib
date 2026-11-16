@@ -22,8 +22,8 @@ IslamicCal.js
 RataDie.js
 */
 
-var RataDie = require("./RataDie.js");
-var IslamicCal = require("./IslamicCal.js");
+import RataDie from "./RataDie.js";
+import IslamicCal from "./IslamicCal.js";
 
 /**
  * @class
@@ -118,4 +118,4 @@ IslamicRataDie.prototype._setDateComponents = function(date) {
 	this.rd = days + time;
 };
 	
-module.exports = IslamicRataDie;
+export default IslamicRataDie;

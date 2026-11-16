@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -321,4 +321,4 @@ VelocityUnit.getMeasures = function () {
 Measurement._constructors["speed"] = VelocityUnit;
 Measurement._constructors["velocity"] = VelocityUnit;
 
-module.exports = VelocityUnit;
+export default VelocityUnit;

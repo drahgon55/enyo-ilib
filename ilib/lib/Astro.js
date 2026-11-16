@@ -35,14 +35,14 @@ GregRataDie.js
  * September 1999.
  */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
-var SearchUtils = require("./SearchUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import MathUtils from "./MathUtils.js";
+import SearchUtils from "./SearchUtils.js";
 
-var GregorianDate = require("./GregorianDate.js");
-var RataDie = require("./RataDie.js");
-var GregRataDie = require("./GregRataDie.js");
+import GregorianDate from "./GregorianDate.js";
+import RataDie from "./RataDie.js";
+import GregRataDie from "./GregRataDie.js";
 
 var Astro = {};
 
@@ -831,4 +831,4 @@ Astro._ceilToJD = function(jd) {
 	return Math.ceil(jd + 0.5) - 0.5;
 };
 
-module.exports = Astro;
+export default Astro;

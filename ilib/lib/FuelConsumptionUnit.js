@@ -22,7 +22,7 @@
 Measurement.js 
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -318,4 +318,4 @@ FuelConsumptionUnit.getMeasures = function() {
 //register with the factory method
 Measurement._constructors["fuelconsumption"] = FuelConsumptionUnit;
 
-module.exports = FuelConsumptionUnit;
+export default FuelConsumptionUnit;

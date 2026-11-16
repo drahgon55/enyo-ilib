@@ -19,11 +19,11 @@
 
 // !depends ilib.js IString.js Utils.js Locale.js
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
 
-var Locale = require("./Locale.js");
-var IString = require("./IString.js");
+import Locale from "./Locale.js";
+import IString from "./IString.js";
 
 /**
  * @class
@@ -177,4 +177,4 @@ StringMapper.prototype = {
 	}	
 };
 
-module.exports = StringMapper;
+export default StringMapper;

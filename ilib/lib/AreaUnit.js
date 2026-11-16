@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -317,4 +317,4 @@ AreaUnit.prototype.localize = function(locale) {
 //register with the factory method
 Measurement._constructors["area"] = AreaUnit;
 
-module.exports = AreaUnit;
+export default AreaUnit;

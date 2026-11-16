@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -215,4 +215,4 @@ TemperatureUnit.prototype.localize = function(locale) {
 //register with the factory method
 Measurement._constructors["temperature"] = TemperatureUnit;
 
-module.exports = TemperatureUnit;
+export default TemperatureUnit;

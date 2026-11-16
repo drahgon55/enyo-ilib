@@ -32,19 +32,19 @@ Astro.js
 
 // !data astro
 
-var ilib = require("./ilib.js");
-var SearchUtils = require("./SearchUtils.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import SearchUtils from "./SearchUtils.js";
+import MathUtils from "./MathUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var TimeZone = require("./TimeZone.js");
-var IDate = require("./IDate.js");
-var Calendar = require("./Calendar.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import TimeZone from "./TimeZone.js";
+import IDate from "./IDate.js";
+import Calendar from "./Calendar.js";
 
-var Astro = require("./Astro.js");
-var PersianCal = require("./PersianCal.js");
-var PersRataDie = require("./PersRataDie.js");
+import Astro from "./Astro.js";
+import PersianCal from "./PersianCal.js";
+import PersRataDie from "./PersRataDie.js";
 
 /**
  * @class
@@ -373,4 +373,4 @@ PersianDate.prototype.getCalendar = function() {
 // register with the factory method
 IDate._constructors["persian"] = PersianDate;
 
-module.exports = PersianDate;
+export default PersianDate;

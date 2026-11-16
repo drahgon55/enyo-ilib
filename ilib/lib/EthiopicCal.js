@@ -19,11 +19,11 @@
 
 /* !depends ilib.js Calendar.js Utils.js MathUtils.js */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import MathUtils from "./MathUtils.js";
 
-var Calendar = require("./Calendar.js");
+import Calendar from "./Calendar.js";
 
 /**
  * @class
@@ -117,4 +117,4 @@ EthiopicCal.prototype.getType = function() {
 /* register this calendar for the factory method */
 Calendar._constructors["ethiopic"] = EthiopicCal;
 
-module.exports = EthiopicCal;
+export default EthiopicCal;

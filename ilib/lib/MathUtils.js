@@ -158,4 +158,4 @@ MathUtils.amod = function (dividend, modulus) {
 	return (x <= 0) ? x + modulus : x;
 };
 
-module.exports = MathUtils;
+export default MathUtils;

@@ -19,7 +19,7 @@
 
 // !depends Measurement.js
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -133,4 +133,4 @@ UnknownUnit.getMeasures = function () {
 	return [];
 };
 
-module.exports = UnknownUnit;
+export default UnknownUnit;

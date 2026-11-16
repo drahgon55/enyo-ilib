@@ -36,19 +36,19 @@ Measurement.js
 
 // TODO: make these dependencies dynamic or at least generate them in the build
 // These will each add themselves to Measurement._constructors[]
-var UnknownUnit = require("./UnknownUnit.js");
-var AreaUnit = require("./AreaUnit.js");
-var DigitalStorageUnit = require("./DigitalStorageUnit.js");
-var EnergyUnit = require("./EnergyUnit.js");
-var FuelConsumptionUnit = require("./FuelConsumptionUnit.js");
-var LengthUnit = require("./LengthUnit.js");
-var MassUnit = require("./MassUnit.js");
-var TemperatureUnit = require("./TemperatureUnit.js");
-var TimeUnit = require("./TimeUnit.js");
-var VelocityUnit = require("./VelocityUnit.js");
-var VolumeUnit = require("./VolumeUnit.js");
+import UnknownUnit from "./UnknownUnit.js";
+import AreaUnit from "./AreaUnit.js";
+import DigitalStorageUnit from "./DigitalStorageUnit.js";
+import EnergyUnit from "./EnergyUnit.js";
+import FuelConsumptionUnit from "./FuelConsumptionUnit.js";
+import LengthUnit from "./LengthUnit.js";
+import MassUnit from "./MassUnit.js";
+import TemperatureUnit from "./TemperatureUnit.js";
+import TimeUnit from "./TimeUnit.js";
+import VelocityUnit from "./VelocityUnit.js";
+import VolumeUnit from "./VolumeUnit.js";
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * Create a measurement subclass instance based on a particular measure
@@ -151,4 +151,4 @@ MeasurementFactory.getAvailableUnits = function () {
 	return units;
 };
 
-module.exports = MeasurementFactory;
+export default MeasurementFactory;

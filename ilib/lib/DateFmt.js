@@ -36,22 +36,22 @@ Utils.js
 
 // !data dateformats sysres
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
 
-var IDate = require("./IDate.js");
-var DateFactory = require("./DateFactory.js");
-var Calendar = require("./Calendar.js");
-var CalendarFactory = require("./CalendarFactory.js");
+import IDate from "./IDate.js";
+import DateFactory from "./DateFactory.js";
+import Calendar from "./Calendar.js";
+import CalendarFactory from "./CalendarFactory.js";
 
-var IString = require("./IString.js");
-var ResBundle = require("./ResBundle.js");
-var TimeZone = require("./TimeZone.js");
-var GregorianCal = require("./GregorianCal.js");
+import IString from "./IString.js";
+import ResBundle from "./ResBundle.js";
+import TimeZone from "./TimeZone.js";
+import GregorianCal from "./GregorianCal.js";
 
 /**
  * @class
@@ -1525,4 +1525,4 @@ DateFmt.prototype = {
 	}
 };
 
-module.exports = DateFmt;
+export default DateFmt;

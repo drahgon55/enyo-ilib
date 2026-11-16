@@ -21,9 +21,9 @@
 
 // !data ctype_c
 
-var ilib = require("./ilib.js");
-var CType = require("./CType.js");
-var IString = require("./IString.js");
+import ilib from "./ilib.js";
+import CType from "./CType.js";
+import IString from "./IString.js";
 
 /**
  * Return whether or not the first character is a control character.<p>
@@ -60,4 +60,4 @@ isCntrl._init = function (sync, loadParams, onLoad) {
 	CType._load("ctype_c", sync, loadParams, onLoad);
 };
 
-module.exports = isCntrl;
+export default isCntrl;

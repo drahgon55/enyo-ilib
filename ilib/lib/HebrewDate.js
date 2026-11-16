@@ -29,17 +29,17 @@ HebrewCal.js
 HebrewRataDie.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var IDate = require("./IDate.js");
-var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import IDate from "./IDate.js";
+import TimeZone from "./TimeZone.js";
+import Calendar from "./Calendar.js";
 
-var HebrewCal = require("./HebrewCal.js");
-var HebrewRataDie = require("./HebrewRataDie.js");
+import HebrewCal from "./HebrewCal.js";
+import HebrewRataDie from "./HebrewRataDie.js";
 
 /**
  * @class
@@ -521,4 +521,4 @@ HebrewDate.prototype.getCalendar = function() {
 // register with the factory method
 IDate._constructors["hebrew"] = HebrewDate;
 
-module.exports = HebrewDate;
+export default HebrewDate;

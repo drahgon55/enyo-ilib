@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -287,4 +287,4 @@ TimeUnit.getMeasures = function () {
 //register with the factory method
 Measurement._constructors["time"] = TimeUnit;
 
-module.exports = TimeUnit;
+export default TimeUnit;

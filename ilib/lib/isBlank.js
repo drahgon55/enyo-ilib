@@ -21,9 +21,9 @@
 
 // !data ctype
 
-var ilib = require("./ilib.js");
-var CType = require("./CType.js");
-var IString = require("./IString.js");
+import ilib from "./ilib.js";
+import CType from "./CType.js";
+import IString from "./IString.js";
 
 /**
  * Return whether or not the first character is a blank character.<p>
@@ -61,4 +61,4 @@ isBlank._init = function (sync, loadParams, onLoad) {
 	CType._init(sync, loadParams, onLoad);
 };
 
-module.exports = isBlank;
+export default isBlank;

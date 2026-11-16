@@ -21,10 +21,10 @@
 
 // !data ctype ctype_z
 
-var ilib = require("./ilib.js");
+import ilib from "./ilib.js";
 
-var CType = require("./CType.js");
-var IString = require("./IString.js");
+import CType from "./CType.js";
+import IString from "./IString.js";
 
 /**
  * Return whether or not the first character is a whitespace character.<p>
@@ -67,4 +67,4 @@ isSpace._init = function (sync, loadParams, onLoad) {
 	});
 };
 
-module.exports = isSpace;
+export default isSpace;

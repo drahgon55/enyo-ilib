@@ -24,10 +24,10 @@ MathUtils.js
 RataDie.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var HanCal = require("./HanCal.js");
-var RataDie = require("./RataDie.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import HanCal from "./HanCal.js";
+import RataDie from "./RataDie.js";
 
 /**
  * Construct a new Han RD date number object. The constructor parameters can 
@@ -188,4 +188,4 @@ HanRataDie._priorLeapMonth = function(jd1, jd2) {
 };
 
 
-module.exports = HanRataDie;
+export default HanRataDie;

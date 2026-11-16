@@ -110,4 +110,4 @@ JulianDay.prototype = {
 	}
 };
 
-module.exports = JulianDay;
+export default JulianDay;

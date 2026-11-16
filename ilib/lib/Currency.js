@@ -21,11 +21,11 @@
 
 // !data currency
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var ResBundle = require("./ResBundle.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import ResBundle from "./ResBundle.js";
 
 /**
  * @class
@@ -257,4 +257,4 @@ Currency.prototype = {
 	}
 };
 
-module.exports = Currency;
+export default Currency;

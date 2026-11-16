@@ -24,9 +24,9 @@ Calendar.js
 MathUtils.js 
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var Calendar = require("./Calendar.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import Calendar from "./Calendar.js";
 
 /**
  * @class
@@ -124,4 +124,4 @@ IslamicCal.prototype.getType = function() {
 /*register this calendar for the factory method */
 Calendar._constructors["islamic"] = IslamicCal;
 
-module.exports = IslamicCal;
+export default IslamicCal;

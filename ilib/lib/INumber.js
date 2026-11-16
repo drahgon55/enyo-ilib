@@ -28,17 +28,17 @@ Utils.js
 Currency.js
 */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
 
-var CType = require("./CType.js");
-var isDigit = require("./isDigit.js");
-var isSpace = require("./isSpace.js");
+import CType from "./CType.js";
+import isDigit from "./isDigit.js";
+import isSpace from "./isSpace.js";
 
-var Currency = require("./Currency.js");
+import Currency from "./Currency.js";
 
 
 /**
@@ -283,4 +283,4 @@ INumber.prototype = {
 	}
 };
 
-module.exports = INumber;
+export default INumber;

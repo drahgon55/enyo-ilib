@@ -19,10 +19,10 @@
 
 // !depends Locale.js IString.js
 
-var ilib = require("./ilib.js");
+import ilib from "./ilib.js";
 
-var Locale = require("./Locale.js");
-var IString = require("./IString.js");
+import Locale from "./Locale.js";
+import IString from "./IString.js";
 
 /**
  * @class
@@ -178,4 +178,4 @@ CaseMapper.prototype = {
 	}
 };
 
-module.exports = CaseMapper;
+export default CaseMapper;

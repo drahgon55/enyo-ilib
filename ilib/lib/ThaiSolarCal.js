@@ -20,10 +20,10 @@
 
 /* !depends ilib.js Calendar.js GregorianCal.js MathUtils.js */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var Calendar = require("./Calendar.js");
-var GregorianCal = require("./GregorianCal.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import Calendar from "./Calendar.js";
+import GregorianCal from "./GregorianCal.js";
 
 /**
  * @class
@@ -59,4 +59,4 @@ ThaiSolarCal.prototype.isLeapYear = function(year) {
 /* register this calendar for the factory method */
 Calendar._constructors["thaisolar"] = ThaiSolarCal;
 
-module.exports = ThaiSolarCal;
+export default ThaiSolarCal;

@@ -19,12 +19,12 @@
 
 // !depends IString.js GlyphString.js Utils.js
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
 
-var IString = require("./IString.js");
-var GlyphString = require("./GlyphString.js");
+import IString from "./IString.js";
+import GlyphString from "./GlyphString.js";
 
 /**
  * @class
@@ -559,4 +559,4 @@ NormString.prototype.charIterator = function() {
 	return new _chiterator(this);
 };
 
-module.exports = NormString;
+export default NormString;

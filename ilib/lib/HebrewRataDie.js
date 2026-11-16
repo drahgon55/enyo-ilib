@@ -23,9 +23,9 @@ HebrewCal.js
 RataDie.js
 */
 
-var HebrewCal = require("./HebrewCal.js");
-var MathUtils = require("./MathUtils.js");
-var RataDie = require("./RataDie.js");
+import HebrewCal from "./HebrewCal.js";
+import MathUtils from "./MathUtils.js";
+import RataDie from "./RataDie.js";
 
 /**
  * @class
@@ -229,4 +229,4 @@ HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek + 1, 7);
 };
 
-module.exports = HebrewRataDie;
+export default HebrewRataDie;

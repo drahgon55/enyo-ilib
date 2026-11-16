@@ -598,4 +598,4 @@ var PhoneHandlerFactory = function (locale, plan) {
 	}
 };
 
-module.exports = PhoneHandlerFactory;
+export default PhoneHandlerFactory;

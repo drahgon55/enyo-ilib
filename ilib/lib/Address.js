@@ -32,15 +32,15 @@ IString.js
 
 // !data address countries nativecountries ctrynames
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
-var CType = require("./CType.js");
-var isIdeo = require("./isIdeo.js");
-var isAscii = require("./isAscii.js");
-var isDigit = require("./isDigit.js");
-var IString = require("./IString.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
+import Locale from "./Locale.js";
+import CType from "./CType.js";
+import isIdeo from "./isIdeo.js";
+import isAscii from "./isAscii.js";
+import isDigit from "./isDigit.js";
+import IString from "./IString.js";
 
 /**
  * @class
@@ -625,4 +625,4 @@ Address.prototype = {
 	}
 };
 
-module.exports = Address;
+export default Address;

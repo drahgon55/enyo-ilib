@@ -140,4 +140,4 @@ Measurement.prototype = {
 	localize: function(locale) {}
 };
 
-module.exports = Measurement;
+export default Measurement;

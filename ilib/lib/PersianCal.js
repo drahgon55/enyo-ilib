@@ -25,12 +25,12 @@ ilib.js
 MathUtils.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
 
-var Calendar = require("./Calendar.js");
+import Calendar from "./Calendar.js";
 
-var PersRataDie = require("./PersRataDie.js");
+import PersRataDie from "./PersRataDie.js";
 
 /**
  * @class
@@ -141,4 +141,4 @@ PersianCal.prototype.getType = function() {
 /* register this calendar for the factory method */
 Calendar._constructors["persian"] = PersianCal;
 
-module.exports = PersianCal;
+export default PersianCal;

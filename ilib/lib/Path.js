@@ -71,4 +71,4 @@ var Path = {
 	}
 };
 
-module.exports = Path;
+export default Path;

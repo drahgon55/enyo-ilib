@@ -22,7 +22,7 @@
 Measurement.js
 */
 
-var Measurement = require("./Measurement.js");
+import Measurement from "./Measurement.js";
 
 /**
  * @class
@@ -317,4 +317,4 @@ DigitalStorageUnit.getMeasures = function () {
 //register with the factory method
 Measurement._constructors["digitalStorage"] = DigitalStorageUnit;
 
-module.exports = DigitalStorageUnit;
+export default DigitalStorageUnit;

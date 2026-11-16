@@ -37,17 +37,17 @@ IString.js
 // http://www.mentalfloss.com/blogs/archives/59277
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var IString = require("./IString.js");
-var CType = require("./CType.js");
-var isAlpha = require("./isAlpha.js");
-var isIdeo = require("./isIdeo.js");
-var isPunct = require("./isPunct.js");
-var isSpace = require("./isSpace.js");
+import Locale from "./Locale.js";
+import IString from "./IString.js";
+import CType from "./CType.js";
+import isAlpha from "./isAlpha.js";
+import isIdeo from "./isIdeo.js";
+import isPunct from "./isPunct.js";
+import isSpace from "./isSpace.js";
 
 /**
  * @class
@@ -1277,4 +1277,4 @@ Name.prototype = {
     }
 };
 
-module.exports = Name;
+export default Name;

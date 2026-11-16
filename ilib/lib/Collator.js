@@ -32,18 +32,18 @@ ElementIterator.js
 
 // !data collation
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var INumber = require("./INumber.js");
-var isPunct = require("./isPunct.js");
-var isDigit = require("./isDigit.js");
-var NormString = require("./NormString.js");
-var CodePointSource = require("./CodePointSource.js");
-var ElementIterator = require("./ElementIterator.js");
-var GlyphString = require("./GlyphString.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import INumber from "./INumber.js";
+import isPunct from "./isPunct.js";
+import isDigit from "./isDigit.js";
+import NormString from "./NormString.js";
+import CodePointSource from "./CodePointSource.js";
+import ElementIterator from "./ElementIterator.js";
+import GlyphString from "./GlyphString.js";
 
 /**
  * @class
@@ -780,4 +780,4 @@ Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
 };
 
-module.exports = Collator;
+export default Collator;

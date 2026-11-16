@@ -24,10 +24,10 @@ JSUtils.js
 EthiopicRataDie.js
 */
 
-var ilib = require("./ilib.js");
-var JSUtils = require("./JSUtils.js");
-var CopticCal = require("./CopticCal.js");
-var EthiopicRataDie = require("./EthiopicRataDie.js");
+import ilib from "./ilib.js";
+import JSUtils from "./JSUtils.js";
+import CopticCal from "./CopticCal.js";
+import EthiopicRataDie from "./EthiopicRataDie.js";
 
 /**
  * @class
@@ -101,4 +101,4 @@ CopticRataDie.prototype = new EthiopicRataDie();
 CopticRataDie.prototype.parent = EthiopicRataDie;
 CopticRataDie.prototype.constructor = CopticRataDie;
 
-module.exports = CopticRataDie;
+export default CopticRataDie;

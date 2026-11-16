@@ -22,8 +22,8 @@ JulianCal.js
 RataDie.js
 */
 
-var RataDie = require("./RataDie.js");
-var JulianCal = require("./JulianCal.js");
+import RataDie from "./RataDie.js";
+import JulianCal from "./JulianCal.js";
 
 /**
  * @class
@@ -122,4 +122,4 @@ JulianRataDie.prototype._setDateComponents = function(date) {
 	this.rd = years + dayInYear + rdtime;
 };
 
-module.exports = JulianRataDie;
+export default JulianRataDie;

@@ -29,13 +29,13 @@ JSUtils.js
 
 // !data states idd mnc
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
-var NumberingPlan = require("./NumberingPlan.js");
-var PhoneLocale = require("./PhoneLocale.js");
-var PhoneHandlerFactory = require("./PhoneHandlerFactory.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
+import Locale from "./Locale.js";
+import NumberingPlan from "./NumberingPlan.js";
+import PhoneLocale from "./PhoneLocale.js";
+import PhoneHandlerFactory from "./PhoneHandlerFactory.js";
 
 /**
  * @class
@@ -1633,4 +1633,4 @@ PhoneNumber.prototype = {
 	}
 };
 
-module.exports = PhoneNumber;
+export default PhoneNumber;

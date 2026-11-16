@@ -32,21 +32,21 @@ HanRataDie.js
 RataDie.js
 */
 
-var ilib = require("./ilib.js");
-var JSUtils = require("./JSUtils.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import JSUtils from "./JSUtils.js";
+import MathUtils from "./MathUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var IDate = require("./IDate.js");
-var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import IDate from "./IDate.js";
+import TimeZone from "./TimeZone.js";
+import Calendar from "./Calendar.js";
 
-var Astro = require("./Astro.js");
-var HanCal = require("./HanCal.js");
-var GregorianDate = require("./GregorianDate.js");
-var HanRataDie = require("./HanRataDie.js");
-var RataDie = require("./RataDie.js");
+import Astro from "./Astro.js";
+import HanCal from "./HanCal.js";
+import GregorianDate from "./GregorianDate.js";
+import HanRataDie from "./HanRataDie.js";
+import RataDie from "./RataDie.js";
 
 /**
  * @class
@@ -518,4 +518,4 @@ HanDate.prototype.getCalendar = function() {
 // register with the factory method
 IDate._constructors["han"] = HanDate;
 
-module.exports = HanDate;
+export default HanDate;

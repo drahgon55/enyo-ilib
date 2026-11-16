@@ -32,17 +32,17 @@ CalendarFactory.js
 
 // !data localeinfo zoneinfo
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import MathUtils from "./MathUtils.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
 
-var GregRataDie = require("./GregRataDie.js");
-var CalendarFactory = require("./CalendarFactory.js");
-var IString = require("./IString.js");
+import GregRataDie from "./GregRataDie.js";
+import CalendarFactory from "./CalendarFactory.js";
+import IString from "./IString.js";
 
 /**
  * @class
@@ -897,4 +897,4 @@ TimeZone.prototype.getCountry = function () {
 	return this.zone.c;
 };
 
-module.exports = TimeZone;
+export default TimeZone;

@@ -28,16 +28,16 @@ TimeZone.js
 EthiopicRataDie.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
 
-var EthiopicRataDie = require("./EthiopicRataDie.js");
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var IDate = require("./IDate.js");
-var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
-var EthiopicCal = require("./EthiopicCal.js");
+import EthiopicRataDie from "./EthiopicRataDie.js";
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import IDate from "./IDate.js";
+import TimeZone from "./TimeZone.js";
+import Calendar from "./Calendar.js";
+import EthiopicCal from "./EthiopicCal.js";
 
 /**
  * @class
@@ -284,4 +284,4 @@ EthiopicDate.prototype.getCalendar = function() {
 //register with the factory method
 IDate._constructors["ethiopic"] = EthiopicDate;
 
-module.exports = EthiopicDate;
+export default EthiopicDate;

@@ -23,9 +23,9 @@ MathUtils.js
 RataDie.js
 */
 
-var MathUtils = require("./MathUtils.js");
-var PersianAlgoCal = require("./PersianAlgoCal.js");
-var RataDie = require("./RataDie.js");
+import MathUtils from "./MathUtils.js";
+import PersianAlgoCal from "./PersianAlgoCal.js";
+import RataDie from "./RataDie.js";
 
 /**
  * @class
@@ -158,4 +158,4 @@ PersAlgoRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek - 3, 7);
 };
 
-module.exports = PersAlgoRataDie;
+export default PersAlgoRataDie;

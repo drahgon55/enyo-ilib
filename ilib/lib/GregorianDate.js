@@ -30,19 +30,19 @@ GregRataDie.js
 TimeZone.js
 */
 
-var ilib = require("./ilib.js");
-var SearchUtils = require("./SearchUtils.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import SearchUtils from "./SearchUtils.js";
+import MathUtils from "./MathUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var JulianDay = require("./JulianDay.js");
-var IDate = require("./IDate.js");
-var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import JulianDay from "./JulianDay.js";
+import IDate from "./IDate.js";
+import TimeZone from "./TimeZone.js";
+import Calendar from "./Calendar.js";
 
-var GregorianCal = require("./GregorianCal.js");
-var GregRataDie = require("./GregRataDie.js");
+import GregorianCal from "./GregorianCal.js";
+import GregRataDie from "./GregRataDie.js";
 
 /**
  * @class
@@ -401,4 +401,4 @@ GregorianDate.prototype.getCalendar = function() {
 // register with the factory method
 IDate._constructors["gregorian"] = GregorianDate;
 
-module.exports = GregorianDate;
+export default GregorianDate;

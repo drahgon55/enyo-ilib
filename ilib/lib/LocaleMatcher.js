@@ -20,9 +20,9 @@
 // !depends ilib.js Locale.js Utils.js
 // !data likelylocales
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
 
 /**
  * @class
@@ -140,4 +140,4 @@ LocaleMatcher.prototype = {
 	}
 };
 
-module.exports = LocaleMatcher;
+export default LocaleMatcher;

@@ -19,10 +19,10 @@
 
 // !depends IString.js isSpace.js isCntrl.js ilib.js
 
-var ilib = require("./ilib.js");
-var IString = require("./IString.js");
-var isSpace = require("./isSpace.js");
-var isCntrl = require("./isCntrl.js");
+import ilib from "./ilib.js";
+import IString from "./IString.js";
+import isSpace from "./isSpace.js";
+import isCntrl from "./isCntrl.js";
 
 /**
  * Return whether or not the first character is any printable character
@@ -63,4 +63,4 @@ isGraph._init = function (sync, loadParams, onLoad) {
 	});
 };
 
-module.exports = isGraph;
+export default isGraph;

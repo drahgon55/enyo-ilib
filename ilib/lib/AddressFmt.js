@@ -28,13 +28,13 @@ JSUtils.js
 
 // !data address
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
 
-var Locale = require("./Locale.js");
-var Address = require("./Address.js");
-var IString = require("./IString.js");
+import Locale from "./Locale.js";
+import Address from "./Address.js";
+import IString from "./IString.js";
 
 /**
  * @class
@@ -208,4 +208,4 @@ AddressFmt.prototype.format = function (address) {
 	return ret.replace(/\n+/g, '\n').trim();
 };
 
-module.exports = AddressFmt;
+export default AddressFmt;

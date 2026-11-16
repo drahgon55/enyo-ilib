@@ -20,7 +20,7 @@
 
 /* !depends LocaleInfo.js */
 
-var LocaleInfo = require("./LocaleInfo.js");
+import LocaleInfo from "./LocaleInfo.js";
 
 /**
  * @class
@@ -387,4 +387,4 @@ IDate.prototype = {
 	}
 };
 
-module.exports = IDate;
+export default IDate;

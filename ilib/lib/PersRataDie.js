@@ -25,12 +25,12 @@ Astro.js
 GregorianDate.js
 */
 
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import MathUtils from "./MathUtils.js";
 
-var Astro = require("./Astro.js");
-var RataDie = require("./RataDie.js");
-var GregorianDate = require("./GregorianDate.js");
+import Astro from "./Astro.js";
+import RataDie from "./RataDie.js";
+import GregorianDate from "./GregorianDate.js";
 
 
 /**
@@ -220,4 +220,4 @@ PersRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek - 3, 7);
 };
 
-module.exports = PersRataDie;
+export default PersRataDie;

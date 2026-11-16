@@ -30,13 +30,13 @@ JSUtils.js
 
 // !data phonefmt
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
-var PhoneNumber = require("./PhoneNumber.js");
-var NumberingPlan = require("./NumberingPlan.js");
-var PhoneLocale = require("./PhoneLocale.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
+import Locale from "./Locale.js";
+import PhoneNumber from "./PhoneNumber.js";
+import NumberingPlan from "./NumberingPlan.js";
+import PhoneLocale from "./PhoneLocale.js";
 
 /**
  * @class
@@ -479,4 +479,4 @@ PhoneFmt.prototype = {
 	}
 };
 
-module.exports = PhoneFmt;
+export default PhoneFmt;

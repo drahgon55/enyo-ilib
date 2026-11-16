@@ -30,14 +30,14 @@ Utils.js
 
 // !data unitfmt
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var ResBundle = require("./ResBundle.js");
-var IString = require("./IString.js");
-var NumFmt = require("./NumFmt.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import ResBundle from "./ResBundle.js";
+import IString from "./IString.js";
+import NumFmt from "./NumFmt.js";
 
 /**
  * @class
@@ -286,4 +286,4 @@ UnitFmt.prototype = {
     }
 };
 
-module.exports = UnitFmt;
+export default UnitFmt;

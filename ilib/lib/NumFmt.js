@@ -32,16 +32,16 @@ INumber.js
 
 // !data localeinfo currency
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
-var MathUtils = require("./MathUtils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
+import JSUtils from "./JSUtils.js";
+import MathUtils from "./MathUtils.js";
 
-var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var Currency = require("./Currency.js");
-var IString = require("./IString.js");
-var INumber = require("./INumber.js");
+import Locale from "./Locale.js";
+import LocaleInfo from "./LocaleInfo.js";
+import Currency from "./Currency.js";
+import IString from "./IString.js";
+import INumber from "./INumber.js";
 
 /**
  * @class
@@ -653,4 +653,4 @@ NumFmt.prototype = {
 	}
 };
 
-module.exports = NumFmt;
+export default NumFmt;

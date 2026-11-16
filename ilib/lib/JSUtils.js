@@ -19,7 +19,7 @@
 
 // !depends ilib.js
 
-var ilib = require("./ilib.js");
+import ilib from "./ilib.js";
 
 var JSUtils = {};
 
@@ -292,4 +292,4 @@ JSUtils.hashCode = function(obj) {
 };
 
 
-module.exports = JSUtils;
+export default JSUtils;

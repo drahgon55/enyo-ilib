@@ -101,4 +101,4 @@ ElementIterator.prototype.next = function () {
 	return ret;
 };
 
-module.exports = ElementIterator;
+export default ElementIterator;

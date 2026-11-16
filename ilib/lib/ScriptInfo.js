@@ -21,8 +21,8 @@
 
 // !data scripts
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
+import ilib from "./ilib.js";
+import Utils from "./Utils.js";
 
 /**
  * @class
@@ -220,4 +220,4 @@ ScriptInfo.prototype = {
 	}
 };
 
-module.exports = ScriptInfo;
+export default ScriptInfo;

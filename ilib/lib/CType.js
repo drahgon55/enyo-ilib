@@ -21,11 +21,11 @@
 
 // !data ctype
 
-var ilib = require("./ilib.js");
-var SearchUtils = require("./SearchUtils.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
-var IString = require("./IString.js");
+import ilib from "./ilib.js";
+import SearchUtils from "./SearchUtils.js";
+import Utils from "./Utils.js";
+import Locale from "./Locale.js";
+import IString from "./IString.js";
 
 /**
  * Provides a set of static routines that return information about characters.
@@ -319,4 +319,4 @@ CType._load = function (name, sync, loadParams, onLoad) {
 	}
 };
 
-module.exports = CType;
+export default CType;
