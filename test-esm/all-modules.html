@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>enyo-ilib ESM — every module</title>
+<style>
+ body { font: 13px/1.5 ui-monospace, monospace; margin: 2rem; }
+ h1 { font-family: system-ui, sans-serif; }
+ .ok { color: #137333; } .bad { color: #c5221f; font-weight: bold; }
+ #summary { font: 600 16px/1.5 system-ui, sans-serif; margin: 1rem 0; }
+ iframe { display: none; }
+</style>
+</head>
+<body>
+<h1>Every module under <code>src/</code> and <code>ilib/lib</code>, loaded cold</h1>
+<p>Each module is imported <em>in a document of its own</em>, so it and its whole
+subgraph are evaluated from scratch. That is what makes this a real test for
+circular-import errors: importing everything into one page shares the module
+registry, and after the first import the graph is already warm, so a cycle that
+breaks a cold load passes silently.</p>
+<script>
+// Classic script, deliberately not a module: it runs even when the module
+// script never does. A missing export or an unresolvable specifier is a
+// LINK-time error, so the module script is not executed at all -- without
+// this, the page just looks unfinished instead of failed.
+(function () {
+	var settled = false;
+	function fail (why) {
+		if (settled) return;
+		settled = true;
+		document.title = 'FAIL (load)';
+		window.__harnessLoadFailure = why;
+		console.error('HARNESS FAILED: ' + why);
+	}
+	window.__harnessSettled = function () { settled = true; };
+	window.addEventListener('error', function (e) {
+		fail('module graph failed to load — ' + ((e && e.message) || 'error'));
+	}, true);
+	setTimeout(function () { fail('harness did not finish'); }, 60000);
+})();
+</script>
+
+<div id="summary">running…</div>
+<div id="out"></div>
+<iframe id="frame"></iframe>
+
+<script type="module">
+import modules from './modules.js';
+
+const out = document.getElementById('out');
+const frame = document.getElementById('frame');
+const failures = [];
+// Every module here exports something. (NodeLoader.js would not, in a browser
+// sense -- it imports bare Node specifiers -- and is excluded from the list.)
+const NO_DEFAULT_EXPECTED = [];
+
+function loadOne (spec) {
+	return new Promise(function (resolve) {
+		function onMessage (e) {
+			if (!e.data || e.data.spec !== spec) return;
+			window.removeEventListener('message', onMessage);
+			clearTimeout(timer);
+			resolve(e.data);
+		}
+		const timer = setTimeout(function () {
+			window.removeEventListener('message', onMessage);
+			resolve({spec: spec, ok: false, error: 'timed out'});
+		}, 20000);
+		window.addEventListener('message', onMessage);
+		frame.src = 'load-one.html?m=' + encodeURIComponent(spec);
+	});
+}
+
+for (const m of modules) {
+	const r = await loadOne(m);
+	// A module with no default export used to be reported as a footnote on a
+	// pass. Every module listed here exports something, so a missing default
+	// is a failure -- that is exactly what a bad export rewrite looks like.
+	if (r.ok && !r.hasDefault && NO_DEFAULT_EXPECTED.indexOf(m) === -1) {
+		failures.push([m, 'no default export']);
+		out.insertAdjacentHTML('beforeend',
+			'<div class="bad">FAIL  ' + m + '   no default export</div>');
+	} else if (r.ok) {
+		out.insertAdjacentHTML('beforeend',
+			'<div class="ok">ok    ' + m +
+			(r.hasDefault ? '' : '   (no default export, expected)') + '</div>');
+	} else {
+		failures.push([m, r.error]);
+		out.insertAdjacentHTML('beforeend',
+			'<div class="bad">FAIL  ' + m + '   ' + r.error.replace(/</g, '&lt;') + '</div>');
+	}
+}
+
+document.getElementById('summary').textContent =
+	modules.length + ' modules loaded cold, ' + failures.length + ' failed';
+document.title = failures.length ? 'FAIL (' + failures.length + ')' : 'ALL ' + modules.length + ' OK';
+window.__harnessSettled();
+window.enyoEsmModuleTest = {total: modules.length, failures: failures};
+console.log(failures.length
+	? 'MODULE FAILURES: ' + JSON.stringify(failures.slice(0, 10), null, 1)
+	: 'ALL ' + modules.length + ' MODULES EVALUATED CLEANLY (cold)');
+</script>
+</body>
+</html>

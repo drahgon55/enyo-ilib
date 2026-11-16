@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>enyo-ilib ESM</title>
+
+<!--
+	Two entries, not one. "enyo-ilib/" is a PREFIX mapping and does not resolve
+	the bare specifier "enyo-ilib", which is what `import 'enyo-ilib'` is. Both
+	are needed, and this is where onyx's two i18n modules import from.
+-->
+<script type="importmap">
+{ "imports": {
+	"enyo/": "/enyo/",
+	"enyo-ilib": "/enyo-ilib/index.js",
+	"enyo-ilib/": "/enyo-ilib/"
+} }
+</script>
+
+<link rel="stylesheet" href="/enyo/css/enyo.css">
+<style>
+	body { font: 14px/1.5 system-ui, sans-serif; margin: 2rem; }
+	#log { white-space: pre-wrap; font-family: ui-monospace, monospace; color: #444; }
+	h2 { margin-top: 1.5rem; }
+</style>
+
+<script>
+// Classic script: runs even when the module script below never does, because a
+// missing export or an unresolvable specifier is a LINK-time error. Without
+// this, that failure leaves the title unchanged and no result object, which
+// reads identically to a page that simply has not finished.
+(function () {
+	var settled = false;
+	function fail (why) {
+		if (settled) return;
+		settled = true;
+		document.title = 'FAIL (load)';
+		window.ilibEsmTest = {results: ['FAIL  ' + why], failed: 1};
+		var log = document.getElementById('log');
+		if (log) log.textContent = 'FAIL  ' + why;
+		console.error('HARNESS FAILED: ' + why);
+	}
+	window.__harnessSettled = function () { settled = true; };
+	window.addEventListener('error', function (e) {
+		fail('module graph failed to load — ' + ((e && e.message) || 'error'));
+	}, true);
+	setTimeout(function () { fail('harness did not finish'); }, 30000);
+
+	// Record every XHR the ilib loader makes. enyo/Ajax goes through XHR, and
+	// the locale data is FETCHED rather than imported -- so a check that only
+	// looks at module state can pass while nothing was loaded at all.
+	window.__xhrLog = [];
+	var open = XMLHttpRequest.prototype.open, send = XMLHttpRequest.prototype.send;
+	XMLHttpRequest.prototype.open = function (method, url) {
+		this.__url = url;
+		return open.apply(this, arguments);
+	};
+	XMLHttpRequest.prototype.send = function () {
+		var self = this;
+		function record () {
+			if (self.readyState === 4) window.__xhrLog.push({url: self.__url, status: self.status});
+		}
+		this.addEventListener('readystatechange', record);
+		try { return send.apply(this, arguments); }
+		finally { record(); }   // sync XHRs are already done here
+	};
+})();
+</script>
+</head>
+<body>
+
+<h1>enyo-ilib 2.7.0 as native ES modules</h1>
+<p>No bundler, no build step. The vendored iLib under <code>ilib/lib</code> and the
+enyo glue in <code>src/</code> are imported straight from source; the 3556 locale
+JSON files are fetched at runtime, as they always were.</p>
+
+<h2>Checks</h2>
+<div id="log">running…</div>
+
+<script type="module">
+import ilib from 'enyo-ilib';
+import DateFactory from 'enyo-ilib/ilib/lib/DateFactory.js';
+import CalendarFactory from 'enyo-ilib/ilib/lib/CalendarFactory.js';
+import DateFmt from 'enyo-ilib/ilib/lib/DateFmt.js';
+import Calendar from 'enyo-ilib/ilib/lib/Calendar.js';
+import IDate from 'enyo-ilib/ilib/lib/IDate.js';
+import glue from '../src/glue.js';
+
+var results = [];
+function check (name, pass, detail) {
+	results.push((pass ? 'PASS  ' : 'FAIL  ') + name + (detail ? '  — ' + detail : ''));
+	document.getElementById('log').textContent = results.join('\n');
+	if (!pass) console.error('FAIL: ' + name + (detail ? ' — ' + detail : ''));
+}
+
+function report () {
+	window.__harnessSettled();
+	var failed = results.filter(function (r) { return r.indexOf('FAIL') === 0; });
+	document.title = failed.length ? 'FAIL (' + failed.length + ')' : 'ALL PASS';
+	window.ilibEsmTest = {results: results, failed: failed.length};
+	console.log(failed.length ? 'TESTS FAILED: ' + failed.length : 'ALL TESTS PASSED');
+}
+
+try {
+	// --- the side effect of importing the package root ---------------------
+	// `import 'enyo-ilib'` is a side-effect import: index.js wires the glue
+	// onto ilib and pulls in src/dates.js. Asserting that the import resolved
+	// would prove nothing; these assert what it did.
+	check('bare specifier "enyo-ilib" resolved', typeof ilib === 'object' && !!ilib);
+	check('index.js wired the enyo glue onto ilib',
+		!!ilib.enyo && ilib.enyo.version === '2.7.0',
+		'ilib.enyo.version = ' + (ilib.enyo && ilib.enyo.version));
+	check('glue exports its three functions',
+		typeof glue.updateI18NClasses === 'function' &&
+		typeof glue.isNonLatinLocale === 'function' &&
+		typeof glue.invalidateResources === 'function');
+
+	// --- registration, which replaced a computed require() -----------------
+	var types = ['gregorian', 'julian', 'islamic', 'hebrew', 'persian', 'persian-algo',
+	             'coptic', 'ethiopic', 'han', 'thaisolar'];
+	var missingCal = types.filter(function (t) { return !Calendar._constructors[t]; });
+	var missingDate = types.filter(function (t) { return !IDate._constructors[t]; });
+	check('all ten calendars registered', missingCal.length === 0, 'missing: ' + missingCal);
+	check('all ten date types registered', missingDate.length === 0, 'missing: ' + missingDate);
+
+	// constructing is the effect that matters -- the registry being populated
+	// is the mechanism, this is the behaviour it exists for
+	var built = [], failedToBuild = [];
+	types.forEach(function (t) {
+		try {
+			var d = DateFactory({type: t, year: 2026, month: 11, day: 16});
+			if (d && typeof d.getJulianDay === 'function') built.push(t); else failedToBuild.push(t);
+		} catch (e) { failedToBuild.push(t + ' (' + e.message + ')'); }
+	});
+	check('DateFactory constructs every registered type',
+		failedToBuild.length === 0, 'failed: ' + failedToBuild.join(', '));
+
+	var cal = CalendarFactory({type: 'islamic'});
+	check('CalendarFactory constructs a non-Gregorian calendar',
+		!!cal && typeof cal.getNumMonths === 'function', cal && cal.getType && cal.getType());
+
+	// --- the path macro, and real locale data ------------------------------
+	// '@../ilib/' was an enyo-dev build-time macro. If import.meta.url did not
+	// replace it correctly, base is a literal string and nothing below loads.
+	var base = ilib.enyo && ilib._loadtime !== undefined ? null : null;
+	var loaderBase = (ilib.getLoader && ilib.getLoader() && ilib.getLoader().base) || '';
+	check('loader base resolved to a real URL under /enyo-ilib/ilib/',
+		/^https?:\/\/[^/]+\/enyo-ilib\/ilib\/$/.test(loaderBase), loaderBase || '(empty)');
+
+	var fmt = new DateFmt({locale: 'en-US', type: 'date', length: 'short'});
+	var formatted = fmt.format(DateFactory({type: 'gregorian', year: 2026, month: 11, day: 16}));
+	check('DateFmt formats a date from loaded locale data',
+		typeof formatted === 'string' && /\d/.test(formatted) && formatted.indexOf('11') > -1,
+		JSON.stringify(formatted));
+
+	var locale = window.__xhrLog.filter(function (r) { return r.url.indexOf('/enyo-ilib/ilib/locale/') > -1; });
+	var localeFailed = locale.filter(function (r) { return r.status !== 200 && r.status !== 0; });
+	check('locale JSON actually fetched over the network',
+		locale.length > 0, locale.length + ' requests under ilib/locale/');
+	check('every locale request succeeded',
+		localeFailed.length === 0,
+		localeFailed.map(function (r) { return r.status + ' ' + r.url; }).join(', '));
+
+	// --- the one expected failure ------------------------------------------
+	// iLib deliberately probes an app-level override directory at the document
+	// root (glue.js: this._loadManifest('', 'resources')). It does not exist
+	// here and is not meant to. This is asserted rather than ignored, so that
+	// any OTHER failing request is still a failure.
+	var other = window.__xhrLog.filter(function (r) {
+		return r.status >= 400 && r.url.indexOf('resources/') !== 0 && r.url.indexOf('/resources/') === -1;
+	});
+	check('the only failing requests are the app-resources probe',
+		other.length === 0,
+		other.map(function (r) { return r.status + ' ' + r.url; }).join(', '));
+
+	check('harness ran to completion', true);
+} catch (e) {
+	check('harness ran to completion', false, String(e && e.stack || e));
+}
+report();
+</script>
+</body>
+</html>

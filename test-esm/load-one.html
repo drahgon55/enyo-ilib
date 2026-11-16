@@ -1,0 +1,37 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>load one</title>
+<!--
+	Loads exactly one module, in a document of its own, and reports the result
+	to the parent. all-modules.html drives this in an iframe once per module.
+
+	The import map is repeated here because this is a separate document and
+	some of these modules reach enyo through bare specifiers.
+
+	The point is the fresh module registry. Importing every module into ONE
+	page shares the registry, so after the first import most of the graph is
+	already evaluated and a circular-import error can no longer occur -- the
+	page reports a clean pass for a graph that genuinely breaks on a cold load.
+-->
+<script type="importmap">
+{ "imports": {
+	"enyo/": "/enyo/",
+	"enyo-ilib": "/enyo-ilib/index.js",
+	"enyo-ilib/": "/enyo-ilib/"
+} }
+</script>
+<script type="module">
+const spec = new URLSearchParams(location.search).get('m');
+let result;
+try {
+	const ns = await import(spec);
+	result = {
+		spec: spec,
+		ok: true,
+		hasDefault: Object.prototype.hasOwnProperty.call(ns, 'default')
+	};
+} catch (e) {
+	result = {spec: spec, ok: false, error: String(e && e.message || e)};
+}
+parent.postMessage(result, '*');
+</script>
