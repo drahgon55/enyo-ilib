@@ -104,7 +104,13 @@ var CalendarFactory = function (options) {
 		new LocaleInfo(locale, {
 			sync: sync,
 			loadParams: options && options.loadParams,
-			onLoad: ilib.bind(this, function(info) {
+			// NOTE (esm fork): was `ilib.bind(this, function(info) {...})`.
+			// CalendarFactory is called as a plain function, so under a module's
+			// strict mode `this` is undefined; ilib.bind returns undefined for a
+			// falsy scope, so onLoad was never built, the assignment below never
+			// ran, and the factory returned undefined. The callback never used
+			// `this`, so the wrapper only had to go.
+			onLoad: function(info) {
 				type = info.getCalendar();
 				
 				instance = CalendarFactory._init(type, options);
@@ -112,7 +118,7 @@ var CalendarFactory = function (options) {
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(instance);
 				}
-			})
+			}
 		});
 	} else {
 		instance = CalendarFactory._init(type, options);

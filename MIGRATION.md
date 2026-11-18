@@ -205,6 +205,70 @@ failing requests are the app-resources probe"*, with every request under
 a clean-console assertion. An exclusion would have made any other failing
 request invisible too.
 
+## A strict-mode casualty: `DateFactory` and `CalendarFactory`
+
+Modules are always strict, and that turned a silent no-op in the old global
+build into a hard failure in two places. Both were found later, by porting
+onyx's samples against this branch.
+
+`DateFactory(options)` and `CalendarFactory(options)` are plain functions, not
+constructors. Each had the shape:
+
+```js
+var DateFactory = function(options) {
+    var ... obj;
+    if (!type) {
+        new LocaleInfo(locale, {
+            sync: sync,
+            onLoad: ilib.bind(this, function(info) {
+                type = info.getCalendar();
+                obj = DateFactory._init(type, options);   // assigns the closed-over obj
+                ...
+            })
+        });
+    } else {
+        obj = DateFactory._init(type, options);
+    }
+    return obj;
+};
+```
+
+and `ilib.bind` begins:
+
+```js
+ilib.bind = function(scope, method /*, bound args */) {
+    if (!scope || !method) {
+        return undefined;
+    }
+```
+
+Called bare, `this` is the global object in sloppy mode and `undefined` in a
+module. So on this branch `ilib.bind` returned `undefined`, `LocaleInfo` was
+handed `onLoad: undefined` and never called back, `obj` was never assigned, and
+**the factory returned `undefined`** — for every call that did not name a
+calendar explicitly, which is the ordinary call.
+
+The symptom was remote from the cause: `DateFmt.format()` turns its argument
+into an iLib date through `DateFactory`, so it threw
+`Cannot read properties of undefined (reading 'getCalendar')` from inside
+`format`, several frames away from the lost callback.
+
+Neither callback uses `this`, so the wrapper simply had to go. A comment at
+each site records why, because this is vendored iLib source and a future
+re-vendoring would quietly reintroduce it.
+
+Worth being precise about the blast radius, since `ilib.bind(this, ...)` occurs
+98 times in `ilib/lib/`: the other 96 are inside constructors (`new DateFmt`,
+`new Address`, …) or methods (`Loader.prototype.*`, `Utils.loadData`, called as
+`Utils.loadData(...)`), and in both cases `this` is a real object under strict
+mode too. Only a function invoked bare loses it, and the two factories are the
+only ones.
+
+Verified against onyx's samples: `TimePickerSample` went from not loading at
+all to rendering completely, and `DatePickerSample`'s readout from throwing to
+formatting per locale — `11/17/26` in `en-US`, `26/11/17` in `ja-JP`,
+`17.11.26` in `de-DE`.
+
 ## Still outstanding
 
 - **onyx's two i18n modules** (`src/i18n/DatePicker.js`, `src/i18n/TimePicker.js`)
